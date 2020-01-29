@@ -2,9 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const authenticate = require('../auth/authenticate-middleware.js');
+// const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const farmsRouter = require('../farms/farms-router.js');
+const productsRouter = require('../products/products-router.js');
 
 const server = express();
 
@@ -19,6 +20,10 @@ server.get('/', (req, res) => {
 })
 
 server.use('/api/auth', authRouter);
-// server.use('/api/farms', authenticate, farmsRouter);
+
+server.use('/api/farms', farmsRouter);
+
+server.use('/api/products', productsRouter);
+
 
 module.exports = server;

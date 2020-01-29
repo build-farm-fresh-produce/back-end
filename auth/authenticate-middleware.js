@@ -14,9 +14,9 @@ module.exports = (req, res, next) => {
     if(authorization){
 
         //bandaid solution since no .env
-        const secret = secret.jwtSecret;
+        // const secret = secret.jwtSecret;
 
-        jwt.verify(authorization, secret, function(err, decodedToken){
+        jwt.verify(authorization, secret.jwtSecret, function(err, decodedToken){
             
             if(err){
                 

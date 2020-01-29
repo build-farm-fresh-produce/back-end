@@ -5,9 +5,11 @@ const Farms = require('./farms-model.js');
 
 const router = express.Router();
 
+const authenticate = require('../auth/authenticate-middleware');
+
 
 //Get List of Farms
-router.get('/', (req, res) => {
+router.get('/', authenticate, (req, res) => {
   Farms.find()
   .then(schemes => {
     res.json(schemes);
@@ -19,10 +21,10 @@ router.get('/', (req, res) => {
 
 
 //Add new Farm
-router.post('/', (req, res) => {
+router.post('/', authenticate, (req, res) => {
     const farmData = req.body;
   
-    Farm.addFarm(farmData)
+    Farms.addFarm(farmData)
     .then(farm => {
       res.status(201).json(farm);
     })
@@ -30,3 +32,6 @@ router.post('/', (req, res) => {
       res.status(500).json({ message: 'Failed to create new farm' });
     });
   });
+
+
+  module.exports = router;

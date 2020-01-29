@@ -5,15 +5,16 @@ exports.up = function(knex) {
       farm
         .string('farm_name', 255)
         .notNullable();
+
       farm.integer('owner_id')
         .unsigned()
         .notNullable();
 
-      farm.foreign('owner_id')
-        .references('id')
-        .inTable('users')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
+      // farm.foreign('owner_id')
+      //   .references('id')
+      //   .inTable('users')
+      //   .onUpdate('CASCADE')
+      //   .onDelete('CASCADE');
 
       farm.text('address')
         .notNullable();

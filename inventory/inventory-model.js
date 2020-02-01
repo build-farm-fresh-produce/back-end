@@ -1,15 +1,16 @@
 const db = require('../database/db-config');
 
+
 function find(){
 
     return db('inventory');
 }
 
 
-async function addProduct(productData){
+async function addProduct(inventoryData){
 
-    const [id] = await db('products')
-                    .insert(productData)
+    const [id] = await db('inventory')
+                    .insert(inventoryData)
 
     return findById(id);
 }
@@ -17,16 +18,36 @@ async function addProduct(productData){
 
 function findById(id){
 
-    return db('products')
+    return db('inventory')
         .where( { id } )
         .first();
 }
 
 
+function update(changes, id){
+    
+    return db('inventory')
+        .where({ id })
+        .update( changes )
+        
+
+}
+
+
+function remove(id){
+
+    return db('inventory')
+        .where( { id } )
+        .del()
+}
+
 module.exports = {
     
     find,
-    addFarm
+    addProduct,
+    findById,
+    update,
+    remove
 
 }
 

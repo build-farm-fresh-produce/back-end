@@ -33,5 +33,43 @@ router.post('/', (req, res) => {
     });
   });
 
+//Edit Farm by Id
+router.put('/:id', authenticate, (req, res) => {
+
+
+  const { id } = req.params;
+  const changes = req.body;
+
+  Farms.findById(id)
+  .then(scheme => {
+    if (scheme) {
+      Farms.update(changes, id)
+      .then(updatedFarm => {
+        res.json(updatedFarm);
+      });
+    } else {
+      res.status(404).json({ message: 'Could not find Farm with given id' });
+    }
+  })
+  .catch (err => {
+    res.status(500).json({ message: 'Failed to update Farm' });
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  Schemes.remove(id)
+  .then(deleted => {
+    if (deleted) {
+      res.json({ removed: deleted });
+    } else {
+      res.status(404).json({ message: 'Could not find scheme with given id' });
+    }
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Failed to delete scheme' });
+  });
+});
 
   module.exports = router;

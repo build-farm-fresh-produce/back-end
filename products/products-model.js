@@ -42,11 +42,30 @@ function findById(id){
         .first();
 }
 
+
+function update(changes, id){
+    
+    return db('products')
+        .where({ id })
+        .update( changes )
+        
+
+}
+
+function remove(id){
+
+    return db('products')
+        .where( { id } )
+        .del()
+}
+
 module.exports = {
     
     find,
     findById,
-    addProduct
+    addProduct,
+    update,
+    remove
     
 }
 

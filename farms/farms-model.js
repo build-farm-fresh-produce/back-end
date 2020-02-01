@@ -15,10 +15,36 @@ function addFarm(data){
     )
 }
 
+function findById(id){
+
+    return db('farms')
+        .where( { id } )
+        .first();
+}
+
+function update(changes, id){
+    
+    return db('farms')
+        .where({ id })
+        .update( changes )
+        
+
+}
+
+function remove(id){
+
+    return db('farms')
+        .where( { id } )
+        .del()
+}
+
 module.exports = {
     
     find,
-    addFarm
+    addFarm, 
+    findById,
+    update,
+    remove
 
 }
 

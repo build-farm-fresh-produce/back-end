@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const authRouter = require('../auth/auth-router.js');
 const farmsRouter = require('../farms/farms-router.js');
 const productsRouter = require('../products/products-router.js');
+const inventoryRouter = require('../products/inventory-router.js');
 
 const server = express();
 
@@ -24,6 +25,8 @@ server.use('/api/auth', authRouter);
 server.use('/api/farms', farmsRouter);
 
 server.use('/api/products', productsRouter);
+
+server.use('/api/inventory', inventoryRouter);
 
 
 module.exports = server;

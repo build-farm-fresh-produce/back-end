@@ -57,13 +57,14 @@ router.post('/login', async (req, res, next) => {
         res.status(200).json({
             message: `Welcome ${user.username}, have a token...!`,
             userId: user.id,
+            is_farmer: user.is_farmer,
             token, //attache token as part of response,
             
 
         })
     }else{
         res.status(401).json({
-            message: `Invalid Credentials!`
+            message: `Invalid Credentials!`, 
         })
     }
 

@@ -8,7 +8,7 @@ function findBy(filter){
 
     return db('users')
         .where(filter)
-        .select("id", "username", "password");
+        .select("id", "username", "password", "is_farmer");
 }
 
 
@@ -29,10 +29,16 @@ function findById(id){
         .first( "id", "username");
 }
 
+function truncate(table){
+
+    return db(table).truncate();
+}
+
 module.exports = {
     
     findBy,
-    addUser
+    addUser,
+    truncate
     
 }
 

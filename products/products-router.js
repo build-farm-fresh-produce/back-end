@@ -50,4 +50,44 @@ router.post('/', authenticate, (req, res) => {
   });
 
 
+//Edit Product by Id
+router.put('/:id', authenticate, (req, res) => {
+
+
+  const { id } = req.params;
+  const changes = req.body;
+
+  Products.findById(id)
+  .then(product => {
+    if (product) {
+      Products.update(changes, id)
+      .then(updatedProduct => {
+        res.json(updatedProduct);
+      });
+    } else {
+      res.status(404).json({ message: 'Could not find Product with given id' });
+    }
+  })
+  .catch (err => {
+    res.status(500).json({ message: 'Failed to update Product' });
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  Products.remove(id)
+  .then(deleted => {
+    if (deleted) {
+      res.json({ removed: deleted });
+    } else {
+      res.status(404).json({ message: 'Could not find Product with given id' });
+    }
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Failed to delete Product' });
+  });
+});
+
+  
   module.exports = router;

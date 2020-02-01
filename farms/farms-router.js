@@ -21,7 +21,7 @@ router.get('/', authenticate, (req, res) => {
 
 
 //Add new Farm
-router.post('/', authenticate, (req, res) => {
+router.post('/', (req, res) => {
     const farmData = req.body;
   
     Farms.addFarm(farmData)

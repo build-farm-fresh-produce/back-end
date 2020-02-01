@@ -45,7 +45,7 @@ router.post('/', authenticate, (req, res) => {
       res.status(201).json(product);
     })
     .catch (err => {
-      res.status(500).json({ message: 'Failed to create new farm' });
+      res.status(500).json({ message: 'Failed to create new product' });
     });
   });
 

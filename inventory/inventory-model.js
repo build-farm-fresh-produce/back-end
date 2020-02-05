@@ -10,7 +10,7 @@ function find(){
 async function addProduct(inventoryData){
 
     const [id] = await db('inventory')
-                    .insert(inventoryData)
+                    .insert(inventoryData, 'id')
 
     return findById(id);
 }

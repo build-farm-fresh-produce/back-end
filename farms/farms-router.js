@@ -20,6 +20,21 @@ router.get('/', authenticate, (req, res) => {
 });
 
 
+//Get Farm by Id
+router.get('/:id', authenticate, (req, res) => {
+
+  const { id } = req.params;
+
+  Farms.findById(id)
+  .then(farm => {
+    res.status(200).json(farm);
+  })
+  .catch (err => {
+    res.status(500).json({ message: 'Failed to find Farm with that ID' });
+  });
+});
+
+
 //Add new Farm
 router.post('/', (req, res) => {
     const farmData = req.body;
@@ -35,7 +50,6 @@ router.post('/', (req, res) => {
 
 //Edit Farm by Id
 router.put('/:id', authenticate, (req, res) => {
-
 
   const { id } = req.params;
   const changes = req.body;
@@ -55,6 +69,8 @@ router.put('/:id', authenticate, (req, res) => {
     res.status(500).json({ message: 'Failed to update Farm' });
   });
 });
+
+
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;

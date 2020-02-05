@@ -19,7 +19,7 @@ async function addProduct(productData){
     delete productData['quantity_in_stock']
 
     const [id] = await db('products')
-                    .insert(productData)
+                    .insert(productData, 'id')
 
     
     const inventoryData = {
@@ -29,7 +29,7 @@ async function addProduct(productData){
     }
     //Insert Product inventory into inventory table
     const [inventory_id] = await db('inventory')
-                            .insert(inventoryData)
+                            .insert(inventoryData, 'id')
 
     return findById(id);
 }

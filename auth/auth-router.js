@@ -56,6 +56,7 @@ router.post('/login', async (req, res, next) => {
         //send token back
         res.status(200).json({
             message: `Welcome ${user.username}, have a token...!`,
+            userName: user.username,
             userId: user.id,
             is_farmer: user.is_farmer,
             token, //attache token as part of response,

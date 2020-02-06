@@ -5,9 +5,9 @@ function find(){
     return db('farms');
 }
 
-function addFarm(data){
+async function addFarm(data){
 
-    return db('farms')
+    return await db('farms')
     .insert(
 
         data

@@ -36,16 +36,21 @@ router.get('/:id', authenticate, (req, res) => {
 
 
 //Add new Farm
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const farmData = req.body;
   
-    Farms.addFarm(farmData)
-    .then(farm => {
-      res.status(201).json(farm);
-    })
-    .catch (err => {
+    let data = await Farms.addFarm(farmData)
+    
+    try{
+      
+      res.status(201).json(data);
+
+    } catch(error) {
+      
       res.status(500).json({ message: 'Failed to create new farm' });
-    });
+
+    }
+    
   });
 
 //Edit Farm by Id

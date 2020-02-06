@@ -8,13 +8,11 @@ exports.up = function(knex) {
 
       farm.integer('owner_id')
         .unsigned()
-        .notNullable();
-
-      // farm.foreign('owner_id')
-      //   .references('id')
-      //   .inTable('users')
-      //   .onUpdate('CASCADE')
-      //   .onDelete('CASCADE');
+        .notNullable()
+        .references('id')
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
 
       farm.text('address')
         .notNullable();

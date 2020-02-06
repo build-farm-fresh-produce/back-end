@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
     
     const productData = req.body;
   
-    Farms.addFarm(productData)
+    Inv.addProduct(productData)
     .then(product => {
       res.status(201).json(product);
     })
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
     });
   });
 
-//Edit Farm by Id
+//Edit Inv by Id
 router.put('/:id', authenticate, (req, res) => {
 
 

@@ -40,18 +40,12 @@ router.post('/', async (req, res) => {
     
     const owner_id = req.headers.owner_id
 
-    const { farm_name, address, city, state, zipcode, phone_number, email } = req.body;
+    const farmData = req.body;
 
     const farmData = {
       
-            farm_name: farm_name,
-            owner_id: owner_id,
-            address: address,
-            city: city,
-            state: state,
-            zipcode: zipcode,
-            phone_number: phone_number,
-            email: email
+            ...farmData,
+            owner_id: owner_id
     }
   
     let data = await Farms.addFarm(farmData)

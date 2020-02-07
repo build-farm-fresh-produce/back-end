@@ -38,15 +38,15 @@ router.get('/:id', authenticate, (req, res) => {
 //Add new Farm
 router.post('/', async (req, res) => {
     
-    const owner_id = req.headers.owner_id
+    // const owner_id = req.headers.owner_id
 
     const farmData = req.body;
 
-    const farmData = {
+    // const farmData = {
       
-            ...farmData,
-            owner_id: owner_id
-    }
+    //         ...farmData,
+    //         owner_id: owner_id
+    // }
   
     let data = await Farms.addFarm(farmData)
     

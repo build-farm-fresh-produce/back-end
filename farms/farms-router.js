@@ -44,14 +44,14 @@ router.post('/', async (req, res) => {
 
     const farmData = {
       
-            farm_name,
-            owner_id,
-            address,
-            city,
-            state,
-            zipcode,
-            phone_number,
-            email
+            farm_name: farm_name,
+            owner_id: owner_id,
+            address: address,
+            city: city,
+            state: state,
+            zipcode: zipcode,
+            phone_number: phone_number,
+            email: email
     }
   
     let data = await Farms.addFarm(farmData)

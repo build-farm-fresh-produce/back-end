@@ -37,7 +37,22 @@ router.get('/:id', authenticate, (req, res) => {
 
 //Add new Farm
 router.post('/', async (req, res) => {
-    const farmData = req.body;
+    
+    const owner_id = req.headers.owner_id
+
+    const { farm_name, address, city, state, zipcode, phone_number, email } = req.body;
+
+    const farmData = {
+      
+            farm_name,
+            owner_id,
+            address,
+            city,
+            state,
+            zipcode,
+            phone_number,
+            email
+    }
   
     let data = await Farms.addFarm(farmData)
     

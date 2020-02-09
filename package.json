@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
-    "test": "DB_ENV=testing jest --watch --verbose"
+    "test": "DB_ENV=testing jest --watchAll --verbose"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,6 @@
     "supertest": "^4.0.2"
   },
   "jest": {
-    "testEnvirnoment": "node"
+    "testEnvironment": "node"
   }
 }

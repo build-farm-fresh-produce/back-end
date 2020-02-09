@@ -79,7 +79,7 @@ test("Login Route", async () => {
 
     expect(result.status).toBe(200)
 
-    console.log(token)
+    // console.log(token)
 
 })
 
@@ -105,11 +105,38 @@ test("Adding Farm Data", async () => {
 
     expect(result.status).toBe(201)
 
-    console.log(result)
+    // console.log(result)
 
     expect(result.text).toBe("[1]")
 
     
+
+})
+
+
+//Third Test
+
+test("Adding a Product", async () => {
+    
+    const productData = {
+
+        "farm_id":1,
+        "product_name":"Oranges",
+        "description":"Florida's best",
+        "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTh09TiNZeokKL1_p9DUkC2VMfCA66E3adDVMTzKvcQy-inlTJd",
+        "price":0.69,
+        "unit":"lbz",
+        "quantity_in_stock":26
+
+    }
+
+    const result = await supertest(server).post("/api/products").set('authorization',token).send(productData);
+
+    expect(result.status).toBe(201)
+
+    // console.log(result)
+
+    expect(result.body.product_name).toBe("Oranges")
 
 })
 

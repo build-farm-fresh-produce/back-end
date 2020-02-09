@@ -79,7 +79,7 @@ test("Login Route", async () => {
 
     expect(result.status).toBe(200)
 
-    console.log(token)
+    // console.log(token)
 
 })
 
@@ -105,7 +105,7 @@ test("Adding Farm Data", async () => {
 
     expect(result.status).toBe(201)
 
-    console.log(result)
+    // console.log(result)
 
     expect(result.text).toBe("[1]")
 
@@ -134,7 +134,7 @@ test("Adding a Product", async () => {
 
     expect(result.status).toBe(201)
 
-    console.log(result)
+    // console.log(result)
 
     expect(result.body.product_name).toBe("Oranges")
 
